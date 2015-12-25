@@ -2,3 +2,11 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+ <h2>
+   <%= @user.email %> <br><br>
+   <%= @user.about_self %><br><br>
+   
+   
+    <li><%= link_to "変更", edit_user_path(current_user), class:"btn btn-primary" %></li>
+  </h2>
