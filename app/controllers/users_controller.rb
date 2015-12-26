@@ -3,6 +3,13 @@ class UsersController < ApplicationController
      @users = User.all
   end
   
+  #showing twitter
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
+  end
+  
+  
   #showing profile page
   def show
     @user = User.find(params[:id])
@@ -34,6 +41,8 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+
   
   
   #for edit  profile page
