@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
     has_secure_password
     
-    validates_confirmation_of :password_confirmation, :password
+    
     has_many :microposts
     
     has_many :following_relationships, class_name:  "Relationship",
@@ -15,18 +15,18 @@ class User < ActiveRecord::Base
                                      dependent:   :destroy
     has_many :following_users, through: :following_relationships, source: :followed
      
-    # 他のユーザーをフォローする
+    # follow other
   def follow(other_user)
     following_relationships.find_or_create_by(followed_id: other_user.id)
   end
 
-  # フォローしているユーザーをアンフォローする
+  # unfollow following use
   def unfollow(other_user)
     following_relationship = following_relationships.find_by(followed_id: other_user.id)
     following_relationship.destroy if following_relationship
   end
 
-  # あるユーザーをフォローしているかどうか？
+  # whther following specific user
   def following?(other_user)
     following_users.include?(other_user)
   end

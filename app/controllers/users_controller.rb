@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
   def index
      @users = User.all
   end
@@ -8,6 +10,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
   end
+  
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless @user == current_user
+    end
+  
   
   
   #showing profile page
@@ -30,8 +38,8 @@ class UsersController < ApplicationController
     end
   end
   
-   before_action :logged_in_user, only: [:edit, :update]
-  #action for updating
+
+   #action for updating
     def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -42,6 +50,14 @@ class UsersController < ApplicationController
     end
   end
   
+  #deliete mis tweet
+  def destroy
+    @micropost = current_user.microposts.find_by(id: params[:id])
+    return redirect_to root_url if @micropost.nil?
+    @micropost.destroy
+    flash[:success] = "Micropost deleted"
+    redirect_to request.referrer || root_url
+  end
 
   
   
