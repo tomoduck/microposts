@@ -30,6 +30,20 @@ class UsersController < ApplicationController
     end
   end
   
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following_users(page: params[:page])
+    
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.follower_users(page: params[:page])
+   
+  end
+  
    before_action :logged_in_user, only: [:edit, :update]
   #action for updating
     def update
