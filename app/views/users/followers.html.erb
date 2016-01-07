@@ -27,7 +27,11 @@
     </div> 
       <ul class="followers">
        <% @users.each do |user| %>
-        <p><li><%= link_to gravatar_for(user, size: 60), user %></p>  <p><%= user.name %></li></p>
+        <ul style="list-style-type: none">
+         <div class="clearfix">
+          <li><%= link_to gravatar_for(user, size: 60), user %><%= user.name %></li>
+         </div>
+        </ul>
        <% end %>
       </ul>
       <% end %>

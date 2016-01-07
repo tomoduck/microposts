@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     end
   end
   
-  def following
+  def followings
     @title = "Following"
     @user  = User.find(params[:id])
     @users = @user.following_users(page: params[:page])
