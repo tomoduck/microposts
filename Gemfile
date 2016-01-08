@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 #kamianri for pagenation
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'carrierwave'
+gem 'cloudinary'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
