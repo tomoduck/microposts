@@ -14,12 +14,19 @@
       <div class="col-md-8">
        <h3>つぶやき一覧</h3>
          <%= render 'shared/feed' %>
+           <%= paginate @feed_items %> 
       </div>
-    <%= paginate @feed_items %>  
   </div>
 <% else %>
-  <div class="center jumbotron">
-    <h1>Micropostsにお帰りなさい</h1>
-    <%= link_to "Micropostsに登録しましょう", signup_path, class: "btn btn-lg btn-primary" %>
+    <div class="body">
+     <body id="home">
+          <h1>Welcome to Microposts</h1>
+          <h2>Connect with your friends — and other fascinating </h2>
+          <h2>people. Get in-the-moment updates on the things </h2>
+          <h2>that interest you. And watch events unfold, in real </h2>
+          <h2>time, from every angle. </h2>
+           <div align="center">
+            <%= link_to "Micropostsに登録しましょう", signup_path, class: "btn btn-lg btn-primary" %>
+           </div>
   </div>
 <% end %>
