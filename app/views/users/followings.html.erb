@@ -22,10 +22,11 @@
     <% if @users.any? %>
     <div class="panel panel-default">
      <div class="panel-heading">
-     <h1><%= @user.name %>さんをフォローしてる人</h1>
+     <h1><%= @user.name %>さんがフォローしてる人</h1>
      </div>
     </div> 
-      <ul class="followers">
+     <div class="panel-body">
+      <ul class="followings">
        <% @users.each do |user| %>
         <ul style="list-style-type: none">
          <div class="clearfix">
@@ -35,5 +36,6 @@
        <% end %>
       </ul>
       <% end %>
+    </div>  
   </div>
 </div>
