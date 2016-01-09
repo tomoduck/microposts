@@ -7,12 +7,10 @@
      </h1>
     </section>
   </aside>
-
   <h2>
    <%= @user.email %> <br><br>
    <%= @user.about_self %><br><br>
   </h2>
-  
  <div class="col-md-8">
      <%= render 'follow_form' if logged_in? %> 
     <% if @user.microposts.any? %>
